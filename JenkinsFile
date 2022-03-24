@@ -1,0 +1,27 @@
+ pipeline {
+     agent any
+     tools { 
+    gradle "Gradle-6"
+  }
+     stages {
+    
+    stage ('clone repository') {
+        
+        steps { 
+        git 'https://github.com/Mercy-Jematia-Komen/devopsip1'
+      }
+      
+    }
+    stage('Build project') {
+  steps { 
+    sh 'gradle build'
+  }
+}
+stage('Tests') {
+  steps { 
+    sh 'gradle test'
+  }
+}
+  
+  }
+}
